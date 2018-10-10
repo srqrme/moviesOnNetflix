@@ -4,6 +4,7 @@ class MoviesOnNetflix::CLI
 
   def call
     puts "Hello and Welcome to Rotten Tomatoes Guide to the best Netflix movies by Tomatometer!"
+    menu
   end
 
   def menu
@@ -43,6 +44,13 @@ class MoviesOnNetflix::CLI
       menu
     end
   end
+
+  def list_movie
+    puts "Title:   #{movie.title}"
+    puts "Rank:    #{movie.rank}"
+  end
+
+
 
 
 end
