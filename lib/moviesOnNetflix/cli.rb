@@ -45,9 +45,11 @@ class MoviesOnNetflix::CLI
     end
   end
 
-  def list_movie
-    puts "Title:   #{movie.title}"
-    puts "Rank:    #{movie.rank}"
+  def list_movies
+    Movie.all.each do |movie|
+      puts "Title:   #{movie.title}"
+      puts "Rank:    #{movie.rank}"
+    end
   end
 
 
