@@ -1,14 +1,12 @@
-class MoviesOnNetflix::MoviesOnNetflix
+class MoviesOnNetflix::Movie
 
   attr_accessor :title, :rank
 
   @@all = []
 
-  def self.made_movie(m)
-    self.new(
-      m.css(“div.article_movie_title h2 a”).text,
-      m.css(“.countdown-index”).text
-      )
+  def create_from_collection(scrape_netflixMovies)
+    scrape_netflixMovies.each do |movie|
+      Movie.new(movie)
     end
   end
 

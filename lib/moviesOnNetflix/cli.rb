@@ -30,7 +30,7 @@ class MoviesOnNetflix::CLI
 
   def how_to
     puts "How to use moviesOnNetflix:"
-    puts "In the welcome page, enter 1 to list all movies by rank."
+    puts "In the welcome page, enter 1 to list all movies. Each movie will be listed by rank according to Rotten Tomatoes Tomato Meter."
     puts "Enter 2 to go to this instructional page"
     puts "Enter 3 to quit moviesOnNetflix"
     puts "Would you like to go back to the welcome page?"
@@ -46,13 +46,9 @@ class MoviesOnNetflix::CLI
   end
 
   def list_movies
-    Movie.all.each do |movie|
+    MoviesOnNetflix::Movie.all do |movie|
       puts "Title:   #{movie.title}"
       puts "Rank:    #{movie.rank}"
     end
   end
-
-
-
-
 end
