@@ -1,16 +1,18 @@
+require 'pry'
+
 class MoviesOnNetflix::Movie
 
   attr_accessor :title, :rank
 
   @@all = []
 
-  def create_from_collection(scrape_netflixMovies)
-    scrape_netflixMovies.each do |movie|
-      Movie.new(movie)
+  def self.create_from_collection
+    MoviesOnNetflix::Scraper.scrape_netflixMovies.each do |movie|
+      self.new(movie[:rank], movie[:title])
     end
   end
 
-  def initialize(title=nil, rank=nil)
+  def initialize(rank=nil, title=nil)
     @title = title
     @rank = rank
     @@all << self

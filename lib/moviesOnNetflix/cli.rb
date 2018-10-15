@@ -1,5 +1,5 @@
 # CLI Controller
-
+require 'pry'
 class MoviesOnNetflix::CLI
 
   def call
@@ -44,11 +44,11 @@ class MoviesOnNetflix::CLI
       menu
     end
   end
-
   def list_movies
-    MoviesOnNetflix::Movie.all do |movie|
-      puts "Title:   #{movie.title}"
+    MoviesOnNetflix::Movie.create_from_collection
+    MoviesOnNetflix::Movie.all.each do |movie|
       puts "Rank:    #{movie.rank}"
+      puts "Title:   #{movie.title}"
     end
   end
 end

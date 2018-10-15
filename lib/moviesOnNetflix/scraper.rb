@@ -4,7 +4,7 @@ require 'pry'
 
 class MoviesOnNetflix::Scraper
 
-  def scrape_netflixMovies
+  def self.scrape_netflixMovies
     m = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/"))
     movies = []
     m.css("div.row.countdown-item").each do |movie|
