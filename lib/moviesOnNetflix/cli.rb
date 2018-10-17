@@ -50,5 +50,15 @@ class MoviesOnNetflix::CLI
       puts "Rank:    #{movie.rank}"
       puts "Title:   #{movie.title}"
     end
+    puts "Please enter the rank number of the movie you'd like more information for:"
+    input = gets.strip.to_i
+
+    movie = MoviesOnNetflix::Movie.find(input.to_i)
+
+    print_movie(movie)
+  end
+
+  def print_movie(movie)
+    puts "#{movie.title}"
   end
 end
