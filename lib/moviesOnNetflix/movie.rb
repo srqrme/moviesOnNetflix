@@ -1,17 +1,8 @@
-require 'pry'
-
 class MoviesOnNetflix::Movie
 
-  attr_accessor :title, :rank, :movie_url, :critic_review
+  attr_accessor :title, :rank, :critic_review
 
   @@all = []
-
-  def initialize(rank=nil, title=nil, movie_url=nil)
-    @title = title
-    @rank = rank
-    @movie_url = movie_url
-    @@all << self
-  end
 
   def self.create_from_collection
     MoviesOnNetflix::Scraper.scrape_netflixMovies.each do |movie|
@@ -19,6 +10,11 @@ class MoviesOnNetflix::Movie
     end
   end
 
+  def initialize(rank=nil, title=nil)
+    @title = title
+    @rank = rank
+    @@all << self
+  end
 
   def self.all
     @@all
