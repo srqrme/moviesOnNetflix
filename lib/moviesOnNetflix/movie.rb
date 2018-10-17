@@ -2,7 +2,7 @@ require 'pry'
 
 class MoviesOnNetflix::Movie
 
-  attr_accessor :title, :rank
+  attr_accessor :title, :rank, :critic_review
 
   @@all = []
 
@@ -24,5 +24,13 @@ class MoviesOnNetflix::Movie
 
   def self.find(id)
     self.all[id-1]
+  end
+
+  def critic_review
+    @critic_review ||= doc.css("span.subtle.superPageFontColor").text
+  end
+
+  def doc
+    @doc ||= Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/"))
   end
 end

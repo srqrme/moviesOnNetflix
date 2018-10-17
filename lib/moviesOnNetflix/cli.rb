@@ -59,6 +59,6 @@ class MoviesOnNetflix::CLI
   end
 
   def print_movie(movie)
-    puts "#{movie.title}"
+    puts "#{movie.critic_review}"
   end
 end
