@@ -1,5 +1,6 @@
 # CLI Controller
 require 'pry'
+
 class MoviesOnNetflix::CLI
 
   def call
@@ -14,32 +15,20 @@ class MoviesOnNetflix::CLI
     input = gets.strip.to_i
 
     case input
-      when 1
-        puts "Best Netflix Movies To Watch Right Now, Listed By Rank:"
-        list_movies
-      when 2
-        puts "Thank you for using moviesOnNetflix, have a nice day!"
-        exit
-      else
-        puts "I'm not sure I understand."
-        menu
+    when 1
+      puts "Best Netflix Movies To Watch Right Now, Listed By Rank:"
+      make_movies
+    when 2
+      puts "Thank you for using moviesOnNetflix, have a nice day!"
+      exit
+    else
+      puts "I'm not sure I understand."
+      menu
     end
   end
 
-  def list_movies
-    MoviesOnNetflix::Movie.create_from_collection
-    MoviesOnNetflix::Movie.all.each do |movie|
-      puts "#{movie.rank}   #{movie.title}"
-    end
-    puts "Please enter the rank number of the movie you'd like more information for:"
-    input = gets.strip.to_i
-
-    movie = MoviesOnNetflix::Movie.find(input.to_i)
-
-    print_movie(movie)
-  end
-
-  def print_movie(movie)
-    puts "#{movie.critic_review}"
+  def make_movies
+    movies_array = MoviesOnNetflix::Scraper.scrape_movie_index("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now")
+    MoviesOnNetflix::Movie.create_from_collection(movies_array)
   end
 end
