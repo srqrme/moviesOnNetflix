@@ -6,6 +6,7 @@ class MoviesOnNetflix::CLI
   def call
     puts "Hello and Welcome to Rotten Tomatoes Guide to the best Netflix movies by Tomatometer!"
     menu
+    run
   end
 
   def menu
@@ -32,5 +33,13 @@ class MoviesOnNetflix::CLI
     MoviesOnNetflix::Movie.all.each do |movie|
       puts "#{movie.rank}   #{movie.title}"
     end
+  end
+
+  def run
+    puts "Please select a movie you'd like more info on"
+    input = gets.strip.to_i
+    movie_object = MoviesOnNetflix::Movie.find(input)
+    MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
+      puts "#{movie.synopsis}"
   end
 end

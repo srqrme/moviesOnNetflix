@@ -1,6 +1,6 @@
 class MoviesOnNetflix::Movie
 
-  attr_accessor :title, :rank, :consensus, :movie_url
+  attr_accessor :title, :rank, :movie_url, :synopsis
 
   @@all = []
 
@@ -9,6 +9,8 @@ class MoviesOnNetflix::Movie
       self.new(movie[:rank], movie[:title])
     end
   end
+
+
 
   def initialize(rank= nil, title=nil)
     @title = title
