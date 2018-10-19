@@ -3,7 +3,7 @@ require 'open-uri'
 require 'pry'
 
 class MoviesOnNetflix::Scraper
-  BASE_PATH = "https://www.rottentomatoes.com/m/"
+  BASE_PATH = "https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/"
 
   def self.scrape_movie_index
     movie_doc = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/"))
@@ -14,7 +14,6 @@ class MoviesOnNetflix::Scraper
       movie_url = row.css("a.article_movie_poster").attribute("href").text
       movie_attributes = {:title => title, :rank => rank, :movie_url => movie_url}
       movies << movie_attributes
-      binding.pry
     end
     movies
   end
@@ -26,7 +25,7 @@ class MoviesOnNetflix::Scraper
     #course.movie_url = row.css(".article_movie_title div h2 a").attribute("href").value
   #end
   def self.scrape_movie_profile(movie_object)
-    profile_doc = Nokogiri::HTML(open(movie_object.movie_url))
+    profile_doc = Nokogiri::HTML(open(BASE_PATH + movie_object.movie_url))
     scraped_profiles = {}
     movie_info = profile_doc.css(".panel-body.content_body") #.collect do |key, value|
     # Assign values to movie_object attributes
