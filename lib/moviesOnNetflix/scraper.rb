@@ -11,9 +11,10 @@ class MoviesOnNetflix::Scraper
     movie_doc.css(".row.countdown-item").each do |row|
       title = row.css(".article_movie_title h2 a").text
       rank = row.css(".countdown-index").text
-      movie_url = row.css("a.article_movie_poster").attribute("href").value
+      movie_url = row.css("a.article_movie_poster").attribute("href").text
       movie_attributes = {:title => title, :rank => rank, :movie_url => movie_url}
       movies << movie_attributes
+      binding.pry
     end
     movies
   end
