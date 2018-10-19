@@ -23,7 +23,7 @@ class MoviesOnNetflix::Movie
     @@all
   end
 
-  def self.find(id)
-    self.all[id-1]
+  def self.find(i)
+    self.all[i-1]
   end
 end
