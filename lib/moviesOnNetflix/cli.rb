@@ -17,7 +17,7 @@ class MoviesOnNetflix::CLI
     case input
     when 1
       puts "Best Netflix Movies To Watch Right Now, Listed By Rank:"
-      make_movies
+      list_movies
     when 2
       puts "Thank you for using moviesOnNetflix, have a nice day!"
       exit
@@ -27,8 +27,10 @@ class MoviesOnNetflix::CLI
     end
   end
 
-  def make_movies
-    movies_array = MoviesOnNetflix::Scraper.scrape_movie_index("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now")
-    MoviesOnNetflix::Movie.create_from_collection(movies_array)
+  def list_movies
+    MoviesOnNetflix::Movie.create_from_collection
+    MoviesOnNetflix::Movie.all.each do |movie|
+      puts "#{movie.rank}   #{movie.title}"
+    end
   end
 end

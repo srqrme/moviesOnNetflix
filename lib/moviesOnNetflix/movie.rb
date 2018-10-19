@@ -5,7 +5,7 @@ class MoviesOnNetflix::Movie
   @@all = []
 
   def self.create_from_collection
-    MoviesOnNetflix::Scraper.scrape_netflixMovies.each do |movie|
+    MoviesOnNetflix::Scraper.scrape_movie_index.each do |movie|
       self.new(movie[:rank], movie[:title])
     end
   end
