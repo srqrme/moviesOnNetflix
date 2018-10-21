@@ -31,5 +31,6 @@ class MoviesOnNetflix::Scraper
     # Assign values to movie_object attributes
     movie_object.synopsis = movie_info.css("#movieSynopsis").text
     movie_object.rating = movie_info.css("li.meta-row.clearfix .meta-value").first.text
+    movie_object.genre = movie_info.css("li.meta-row.clearfix .meta-value a").text
   end
 end

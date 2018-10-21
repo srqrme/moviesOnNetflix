@@ -44,6 +44,7 @@ class MoviesOnNetflix::CLI
       puts ""
       puts "Title:  #{movie_object.title}"
       puts "Rating: #{movie_object.rating}"
+      puts "Genre:  #{movie_object.genre}"
       puts ""
       puts "Synopsis: #{movie_object.synopsis}"
   end
