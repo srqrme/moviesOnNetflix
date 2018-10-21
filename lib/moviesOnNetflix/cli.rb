@@ -36,13 +36,15 @@ class MoviesOnNetflix::CLI
   end
 
   def run
+    puts ""
     puts "Please select a movie you'd like more info on"
     input = gets.strip.to_i
     movie_object = MoviesOnNetflix::Movie.find(input)
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
-      puts "#{movie_object.title}"
-      puts "#{movie_object.rating}"
       puts ""
-      puts "#{movie_object.synopsis}"
+      puts "Title:  #{movie_object.title}"
+      puts "Rating: #{movie_object.rating}"
+      puts ""
+      puts "Synopsis: #{movie_object.synopsis}"
   end
 end
