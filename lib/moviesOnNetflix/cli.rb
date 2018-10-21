@@ -40,6 +40,6 @@ class MoviesOnNetflix::CLI
     input = gets.strip.to_i
     movie_object = MoviesOnNetflix::Movie.find(input)
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
-      puts "#{movie.synopsis}"
+      puts "#{movie_object.synopsis}"
   end
 end
