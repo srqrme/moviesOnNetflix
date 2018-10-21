@@ -29,7 +29,7 @@ class MoviesOnNetflix::Scraper
     scraped_profiles = {}
     movie_info = profile_doc.css(".panel-body.content_body") #.collect do |key, value|
     # Assign values to movie_object attributes
-    movie_object.synopsis = movie_info.css("#movieSynopsis").text      # movie_info.each do |key|
-      #  if key.include?()
+    movie_object.synopsis = movie_info.css("#movieSynopsis").text
+    movie_object.rating = movie_info.css("li.meta-row.clearfix .meta-value").first.text
   end
 end
