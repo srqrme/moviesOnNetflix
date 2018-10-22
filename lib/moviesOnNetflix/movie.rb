@@ -1,6 +1,6 @@
 class MoviesOnNetflix::Movie
 
-  attr_accessor :title, :rank, :movie_url, :synopsis, :rating, :genre, :director
+  attr_accessor :title, :rank, :movie_url, :synopsis, :rating, :genre, :director, :release_date
 
   @@all = []
 
