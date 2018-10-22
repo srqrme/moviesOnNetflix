@@ -27,7 +27,7 @@ class MoviesOnNetflix::CLI
     case input
     when 1
       puts "--------------------------------------------------------------------------------"
-      puts "These are the top movies to watch on Netflix right now, listed in rank order:"
+      puts "Here are the top movies to watch on Netflix right now, listed in rank order:"
       puts "--------------------------------------------------------------------------------"
       list_movies
     when 2
@@ -46,7 +46,7 @@ class MoviesOnNetflix::CLI
   end
 
   def run
-    puts ""
+    puts "--------------------------------------------------------------------------------"
     puts "Please enter the rank number of a movie you'd like more info on"
     input = gets.strip.to_i
     movie_object = MoviesOnNetflix::Movie.find(input)
