@@ -32,6 +32,6 @@ class MoviesOnNetflix::Scraper
     movie_object.synopsis = movie_info.css("#movieSynopsis").text.strip
     movie_object.rating = movie_info.css("ul li:first-child .meta-value").text
     movie_object.genre = movie_info.css("ul li[2] .meta-value").text.strip
-    movie_object.director = movie_info.css("")
+    movie_object.director = movie_info.css("ul li[3] .meta-value").text.strip
   end
 end
