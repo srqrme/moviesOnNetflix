@@ -27,11 +27,10 @@ class MoviesOnNetflix::Scraper
   def self.scrape_movie_profile(movie_object)
     profile_doc = Nokogiri::HTML(open(movie_object.movie_url))
     scraped_profiles = {}
-    movie_info = profile_doc.css(".panel-body.content_body") #.collect do |key, value|
+    movie_info = profile_doc.css("div.content_body") #.collect do |key, value|
     # Assign values to movie_object attributes
     movie_object.synopsis = movie_info.css("#movieSynopsis").text
-    movie_object.rating = movie_info.css("li.meta-row.clearfix .meta-value").first.text
-    movie_object.genre = movie_info.css("div.panel-body.content_body ul:nth-child(2)").text
-    binding.pry
+    movie_object.rating = movie_info.css("ul li:first-child .meta-value").text
+    movie_object.genre = movie_info.css()
   end
 end
