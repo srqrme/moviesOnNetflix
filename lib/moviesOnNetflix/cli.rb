@@ -3,22 +3,32 @@ require 'pry'
 
 class MoviesOnNetflix::CLI
 
-  def call
-    puts "Hello and Welcome to Rotten Tomatoes Guide to the best Netflix movies by Tomatometer!"
+  def start
+    puts "----------------------------------------------------------------------------"
+    puts "Hello and Welcome to The Best of Netflix:".center(75)
+    puts "A Guide to the best Netflix movies according to Rotten Tomatoes!".center(75)
+    puts "----------------------------------------------------------------------------"
     menu
+    select
     run
     view_another
   end
 
   def menu
-    puts "Please enter a number from the following options"
-    puts "1. List Movies"
-    puts "2. Quit"
-    input = gets.strip.to_i
+    puts "How can I help you today?".center(65)
+    puts ""
+    puts "Enter '1' to see Rotten Tomatoes' current list of the best movies on Netflix."
+    puts "Enter '2' to leave The Best of Netflix"
+    puts "--------------------------------------------------------------------------------"
+  end
 
+  def select
+    input = gets.strip.to_i
     case input
     when 1
-      puts "Best Netflix Movies To Watch Right Now, Listed By Rank:"
+      puts "--------------------------------------------------------------------------------"
+      puts "These are the top movies to watch on Netflix right now, listed in rank order:"
+      puts "--------------------------------------------------------------------------------"
       list_movies
     when 2
       quit
@@ -43,7 +53,8 @@ class MoviesOnNetflix::CLI
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
       puts ""
       puts "--------------- #{movie_object.title} ---------------"
-      puts "Rating: #{movie_object.rating}"
+      puts "Audience Score: #{movie_object.audience_score} liked it."
+      puts "Film Rating: #{movie_object.rating}"
       puts "Genre:  #{movie_object.genre}"
       puts "Director: #{movie_object.director}"
       puts "Run Time: #{movie_object.runtime}"
