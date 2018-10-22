@@ -11,7 +11,6 @@ class MoviesOnNetflix::CLI
     menu
     select
     run
-    view_another
   end
 
   def menu
@@ -60,6 +59,7 @@ class MoviesOnNetflix::CLI
       puts "Run Time: #{movie_object.runtime}"
       puts "--------------- Synopsis: ---------------"
       puts "#{movie_object.synopsis}"
+    view_another
   end
 
   def quit
@@ -70,7 +70,7 @@ class MoviesOnNetflix::CLI
   end
 
   def view_another
-    puts ""
+    puts "--------------------------------------------------------------------------------"
     puts "Would you like to view the details of another movie? Y/N?"
     input = gets.chomp
 
