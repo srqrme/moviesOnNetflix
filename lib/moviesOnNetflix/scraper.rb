@@ -29,8 +29,8 @@ class MoviesOnNetflix::Scraper
     scraped_profiles = {}
     movie_info = profile_doc.css("div.content_body") #.collect do |key, value|
     # Assign values to movie_object attributes
-    movie_object.synopsis = movie_info.css("#movieSynopsis").text
+    movie_object.synopsis = movie_info.css("#movieSynopsis").text.strip
     movie_object.rating = movie_info.css("ul li:first-child .meta-value").text
-    movie_object.genre = movie_info.css()
+    movie_object.genre = movie_info.css("ul li[2] .meta-value").text.strip
   end
 end
