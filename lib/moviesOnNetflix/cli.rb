@@ -7,6 +7,7 @@ class MoviesOnNetflix::CLI
     puts "Hello and Welcome to Rotten Tomatoes Guide to the best Netflix movies by Tomatometer!"
     menu
     run
+    view_another
   end
 
   def menu
@@ -20,8 +21,7 @@ class MoviesOnNetflix::CLI
       puts "Best Netflix Movies To Watch Right Now, Listed By Rank:"
       list_movies
     when 2
-      puts "Thank you for using moviesOnNetflix, have a nice day!"
-      exit
+      quit
     else
       puts "I'm not sure I understand."
       menu
@@ -37,7 +37,7 @@ class MoviesOnNetflix::CLI
 
   def run
     puts ""
-    puts "Please select a movie you'd like more info on"
+    puts "Please enter the rank number of a movie you'd like more info on"
     input = gets.strip.to_i
     movie_object = MoviesOnNetflix::Movie.find(input)
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
@@ -47,7 +47,30 @@ class MoviesOnNetflix::CLI
       puts "Genre:  #{movie_object.genre}"
       puts "Director: #{movie_object.director}"
       puts "Release Date: #{movie_object.release_date}"
-      puts ""
-      puts "Synopsis: #{movie_object.synopsis}"
+      puts "--------------- Synopsis: ---------------"
+      puts "#{movie_object.synopsis}"
+  end
+
+  def quit
+    puts ""
+    puts "Thank you for using moviesOnNetflix, have a nice day!"
+    puts ""
+    exit
+  end
+
+  def view_another
+    puts ""
+    puts "Would you like to view the details of another movie? Y/N?"
+    input = gets.chomp
+
+    case input
+    when "y" || "Y"
+      run
+    when "n" || "N"
+      quit
+    else
+      puts "I'm not sure I understand."
+      menu
+    end
   end
 end
