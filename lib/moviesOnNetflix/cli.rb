@@ -42,7 +42,7 @@ class MoviesOnNetflix::CLI
     movie_object = MoviesOnNetflix::Movie.find(input)
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
       puts ""
-      puts "Title:  #{movie_object.title}"
+      puts "--------------- #{movie_object.title} ---------------"
       puts "Rating: #{movie_object.rating}"
       puts "Genre:  #{movie_object.genre}"
       puts "Director: #{movie_object.director}"
