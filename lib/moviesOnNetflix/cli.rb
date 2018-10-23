@@ -10,7 +10,7 @@ class MoviesOnNetflix::CLI
     puts "A Guide to the best Netflix movies according to Rotten Tomatoes!"
     puts ""
     puts "......................................................................................................................................."
-    sleep(01)
+    sleep(0.5)
     menu
   end
 
@@ -33,9 +33,10 @@ class MoviesOnNetflix::CLI
       puts "Here are the top movies to watch on Netflix right now, listed in rank order:"
       puts ""
       puts "......................................................................................................................................."
-      sleep(01)
+      sleep(0.5)
       list_movies
       puts ""
+      sleep(0.5)
       run
     when 2
       quit
@@ -53,8 +54,8 @@ class MoviesOnNetflix::CLI
   end
 
   def run
-    puts "......................................................................................................................................."
     puts ""
+    puts "......................................................................................................................................."
     puts "Please enter the rank number of a movie you'd like more information on:"
     puts ""
     puts "......................................................................................................................................."
@@ -66,7 +67,7 @@ class MoviesOnNetflix::CLI
 
     movie_object = MoviesOnNetflix::Movie.find(input)
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
-      puts "  #{movie_object.rank}  #{movie_object.title.upcase}"
+      puts "    #{movie_object.title.upcase}"
       puts "......................................................................................................................................."
       puts ""
       puts "Audience Score: #{movie_object.audience_score} liked it."
