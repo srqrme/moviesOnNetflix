@@ -35,5 +35,19 @@ class MoviesOnNetflix::Scraper
     movie_object.director = movie_info.css("ul li[3] .meta-value").text.strip
     movie_object.runtime = movie_info.css("ul li[6] .meta-value").text.strip
     movie_object.audience_score = movie_info.css("div.meter-value span.superPageFontColor").text
+
+    puts "    #{movie_object.title.upcase}"
+    puts "......................................................................................................................................."
+    puts ""
+    puts "Audience Score: #{movie_object.audience_score} liked it."
+    puts "Film Rating: #{movie_object.rating}"
+    puts "Genre:  #{movie_object.genre}"
+    puts "Director: #{movie_object.director}"
+    puts "Run Time: #{movie_object.runtime}"
+    puts ""
+    puts ".................... Synopsis ...................."
+    puts ""
+    puts "#{movie_object.synopsis}"
+    puts ""
   end
 end

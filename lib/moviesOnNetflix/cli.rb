@@ -54,8 +54,8 @@ class MoviesOnNetflix::CLI
   end
 
   def run
-    puts ""
     puts "......................................................................................................................................."
+    puts ""
     puts "Please enter the rank number of a movie you'd like more information on:"
     puts ""
     puts "......................................................................................................................................."
@@ -66,20 +66,9 @@ class MoviesOnNetflix::CLI
     puts "......................................................................................................................................."
 
     movie_object = MoviesOnNetflix::Movie.find(input)
+
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
-      puts "    #{movie_object.title.upcase}"
-      puts "......................................................................................................................................."
-      puts ""
-      puts "Audience Score: #{movie_object.audience_score} liked it."
-      puts "Film Rating: #{movie_object.rating}"
-      puts "Genre:  #{movie_object.genre}"
-      puts "Director: #{movie_object.director}"
-      puts "Run Time: #{movie_object.runtime}"
-      puts ""
-      puts ".................... Synopsis ...................."
-      puts ""
-      puts "#{movie_object.synopsis}"
-      puts ""
+
     view_another
   end
 
