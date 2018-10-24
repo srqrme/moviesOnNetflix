@@ -13,6 +13,7 @@ class MoviesOnNetflix::CLI
     menu
   end
 
+  #Asks the user what they would like to do, the user then types in a number from the selections
   def menu
     puts ""
     puts "Please enter a number from the following options:"
@@ -22,6 +23,7 @@ class MoviesOnNetflix::CLI
     puts ""
     puts ""
 
+    #Gets the user's menu selection as a string, then converts it to an integer
     input = gets.strip.to_i
 
     case input
