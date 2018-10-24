@@ -3,6 +3,7 @@ require 'pry'
 
 class MoviesOnNetflix::CLI
 
+  #Begins the CLI with a greeting, then runs the next method: menu
   def start
     # puts "......................................................................................................................................."
     puts ""
@@ -13,7 +14,6 @@ class MoviesOnNetflix::CLI
   end
 
   def menu
-
     puts ""
     puts "Please enter a number from the following options:"
     puts ""
