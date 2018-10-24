@@ -3,7 +3,6 @@ require 'open-uri'
 require 'pry'
 
 class MoviesOnNetflix::Scraper
-  BASE_PATH = "https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/"
 
   def self.scrape_movie_index
     movie_doc = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/best-netflix-movies-to-watch-right-now/"))
