@@ -4,13 +4,11 @@ require 'pry'
 class MoviesOnNetflix::CLI
 
   def start
-    puts "......................................................................................................................................."
+    # puts "......................................................................................................................................."
     puts ""
     puts "Hello and Welcome to The Best of Netflix:"
     puts "A Guide to the best Netflix movies according to Rotten Tomatoes!"
     puts ""
-    puts "......................................................................................................................................."
-    sleep(0.5)
     menu
   end
 
@@ -69,6 +67,8 @@ class MoviesOnNetflix::CLI
 
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
 
+    print_movie(movie_object)
+
     view_another
   end
 
@@ -100,12 +100,19 @@ class MoviesOnNetflix::CLI
     exit
   end
 
-  def choose_movie
+  def print_movie(movie_object)
+    puts "    #{movie_object.title.upcase}"
     puts "......................................................................................................................................."
     puts ""
-    puts "Please enter the rank number of a movie you'd like more information on:"
+    puts "Audience Score: #{movie_object.audience_score} liked it."
+    puts "Film Rating: #{movie_object.rating}"
+    puts "Genre:  #{movie_object.genre}"
+    puts "Director: #{movie_object.director}"
+    puts "Starring: #{movie_object.cast}"
     puts ""
-    puts "......................................................................................................................................."
+    puts ".................... Synopsis ...................."
+    puts ""
+    puts "#{movie_object.synopsis}"
     puts ""
   end
 end

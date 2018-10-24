@@ -30,23 +30,9 @@ class MoviesOnNetflix::Scraper
     # Assign values to movie_object attributes
     movie_object.audience_score = movie_info.css(".meter-value .superPageFontColor").text
     movie_object.synopsis = movie_info.css("#movieSynopsis").text.strip
-    movie_object.rating = movie_info.css("ul li:first-child .meta-value").text
-    movie_object.genre = movie_info.css("ul li[2] .meta-value a").first.text.strip
-    movie_object.director = movie_info.css("ul li[3] .meta-value").text.strip
-    movie_object.runtime = movie_info.css("ul li[6] .meta-value").text.strip
-
-    puts "    #{movie_object.title.upcase}"
-    puts "......................................................................................................................................."
-    puts ""
-    puts "Audience Score: #{movie_object.audience_score} liked it."
-    puts "Film Rating: #{movie_object.rating}"
-    puts "Genre:  #{movie_object.genre}"
-    puts "Director: #{movie_object.director}"
-    puts "Run Time: #{movie_object.runtime}"
-    puts ""
-    puts ".................... Synopsis ...................."
-    puts ""
-    puts "#{movie_object.synopsis}"
-    puts ""
+    movie_object.rating = movie_info.css("ul li:first-child meta-value").text.strip
+    movie_object.genre = movie_info.css("ul li[2] .meta-value a").first.text.chomp.strip
+    movie_object.director = movie_info.css("ul li[3] .meta-value a").text.strip
+    movie_object.cast = movie_info.css(".cast-item.media.inlineBlock .media-body a span").text.chomp
   end
 end
