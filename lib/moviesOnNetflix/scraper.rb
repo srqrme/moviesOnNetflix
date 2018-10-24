@@ -28,12 +28,12 @@ class MoviesOnNetflix::Scraper
     scraped_profiles = {}
     movie_info = profile_doc.css("#mainColumn") #.collect do |key, value|
     # Assign values to movie_object attributes
+    movie_object.audience_score = movie_info.css(".meter-value .superPageFontColor").text
     movie_object.synopsis = movie_info.css("#movieSynopsis").text.strip
     movie_object.rating = movie_info.css("ul li:first-child .meta-value").text
-    movie_object.genre = movie_info.css("ul li[2] .meta-value").text.strip
+    movie_object.genre = movie_info.css("ul li[2] .meta-value a").first.text.strip
     movie_object.director = movie_info.css("ul li[3] .meta-value").text.strip
     movie_object.runtime = movie_info.css("ul li[6] .meta-value").text.strip
-    movie_object.audience_score = movie_info.css("div.meter-value span.superPageFontColor").text
 
     puts "    #{movie_object.title.upcase}"
     puts "......................................................................................................................................."
