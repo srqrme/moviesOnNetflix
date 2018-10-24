@@ -20,21 +20,22 @@ class MoviesOnNetflix::CLI
     puts "Enter '1' if you'd like to see Rotten Tomatoes' current list of the best movies on Netflix."
     puts "Enter '2' to leave The Best of Netflix"
     puts ""
-    puts "........................................................................................................................................."
+    puts ""
 
     input = gets.strip.to_i
 
     case input
     when 1
-      puts "......................................................................................................................................."
+      puts ""
       puts ""
       puts "Here are the top movies to watch on Netflix right now, listed in rank order:"
       puts ""
-      puts "......................................................................................................................................."
-      sleep(0.5)
-      list_movies
       puts ""
-      sleep(0.5)
+
+      list_movies
+
+      puts ""
+
       run
     when 2
       quit
@@ -52,16 +53,16 @@ class MoviesOnNetflix::CLI
   end
 
   def run
-    puts "......................................................................................................................................."
+    puts ""
     puts ""
     puts "Please enter the rank number of a movie you'd like more information on:"
     puts ""
-    puts "......................................................................................................................................."
+    puts ""
     puts ""
 
     input = gets.strip.to_i
 
-    puts "......................................................................................................................................."
+    puts ""
 
     movie_object = MoviesOnNetflix::Movie.find(input)
 
@@ -74,11 +75,11 @@ class MoviesOnNetflix::CLI
 
   def view_another
 
-    puts "......................................................................................................................................."
+    puts ""
     puts ""
     puts "Would you like to see the details of another movie? Y/N?"
     puts ""
-    puts "......................................................................................................................................."
+    puts ""
 
     input = gets.chomp
 
@@ -101,8 +102,7 @@ class MoviesOnNetflix::CLI
   end
 
   def print_movie(movie_object)
-    puts "    #{movie_object.title.upcase}"
-    puts "......................................................................................................................................."
+    puts ".................... #{movie_object.title.upcase} ...................."
     puts ""
     puts "Audience Score: #{movie_object.audience_score} liked it."
     puts "Film Rating: #{movie_object.rating}"
