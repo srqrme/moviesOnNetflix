@@ -26,20 +26,18 @@ class MoviesOnNetflix::CLI
     #Gets the user's menu selection as a string, then converts it to an integer
     input = gets.strip.to_i
 
-    case input
-    when 1
-      puts ""
+    #If user selects 1, #list_movies is executed. If user selects 2, #quit is executed. If any other entry, error message is executed and user is brought back to the beginning of the #menu.
+    if input == 1
+    #case input
+    #when 1
       puts ""
       puts "Here are the top movies to watch on Netflix right now, listed in rank order:"
       puts ""
-      puts ""
-
       list_movies
-
       puts ""
-
       run
-    when 2
+    elsif input == 2
+    #when 2
       quit
     else
       puts "I'm not sure I understand."
@@ -48,6 +46,7 @@ class MoviesOnNetflix::CLI
   end
 
   def list_movies
+    #Calls and executes the Movie class method, #create_from_collection.
     MoviesOnNetflix::Movie.create_from_collection
     MoviesOnNetflix::Movie.all.each do |movie|
       puts "#{movie.rank}   #{movie.title}"
