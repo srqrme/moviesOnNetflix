@@ -48,6 +48,7 @@ class MoviesOnNetflix::CLI
   def list_movies
     #Calls and executes the Movie class method, #create_from_collection.
     MoviesOnNetflix::Movie.create_from_collection
+    #Instantiates each
     MoviesOnNetflix::Movie.all.each do |movie|
       puts "#{movie.rank}   #{movie.title}"
     end
@@ -84,10 +85,9 @@ class MoviesOnNetflix::CLI
 
     input = gets.chomp
 
-    case input
-    when "y" || "Y"
+    if input == "y" || input == "Y"
       run
-    when "n" || "N"
+    elsif input == "n" || input == "N"
       quit
     else
       puts "I'm not sure I understand."
@@ -103,17 +103,25 @@ class MoviesOnNetflix::CLI
   end
 
   def print_movie(movie_object)
-    puts ".................... #{movie_object.title.upcase} ...................."
-    puts ""
-    puts "Audience Score: #{movie_object.audience_score} liked it."
-    puts "Film Rating: #{movie_object.rating}"
-    puts "Genre:  #{movie_object.genre}"
-    puts "Director: #{movie_object.director}"
-    puts "Starring: #{movie_object.cast}"
-    puts ""
-    puts ".................... Synopsis ...................."
-    puts ""
-    puts "#{movie_object.synopsis}"
-    puts ""
+    if missing(movie_object) == true
+      puts "N/A"
+    else
+      puts ".................... #{movie_object.title.upcase} ...................."
+      puts ""
+      puts "Audience Score: #{movie_object.audience_score} liked it."
+      puts "Film Rating: #{movie_object.rating}"
+      puts "Genre:  #{movie_object.genre}"
+      puts "Starring: #{movie_object.cast}"
+      puts ""
+      puts ".................... Synopsis ...................."
+      puts ""
+      puts "#{movie_object.synopsis}"
+    end
+  end
+
+  def missing(movie_object)
+    MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object).split.detect {|i|
+      i == ""
+    }
   end
 end

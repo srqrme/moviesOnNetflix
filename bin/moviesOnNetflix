@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/moviesOnNetflix'
+require_relative '../lib/moviesOnNetflix'
 
 #Instantiates a new instance of the MoviesOnNetflix::CLI class and telling the instance to run the first method: start.
 MoviesOnNetflix::CLI.new.start
