@@ -16,13 +16,7 @@ class MoviesOnNetflix::Scraper
     end
     movies
   end
-  #doc.css(".row.countdown-item").each do |row|
-    #course = Course.new
-    #course.title = row.css(".article_movie_title h2 a").text
-    #course.rank = row.css(".countdown-index").text
-    #course.consensus = row.css(".info.critics-consensus").text.split("Critics Consensus:").join
-    #course.movie_url = row.css(".article_movie_title div h2 a").attribute("href").value
-  #end
+
   def self.scrape_movie_profile(movie_object)
     profile_doc = Nokogiri::HTML(open(movie_object.movie_url))
     scraped_movie = []
@@ -34,7 +28,6 @@ class MoviesOnNetflix::Scraper
       movie_object.genre = movie_info.css("ul li[2] .meta-value a").first.text.chomp.strip
       movie_object.director = movie_info.css("ul li[3] .meta-value a").text.strip
       movie_object.cast = movie_info.css(".cast-item.media.inlineBlock .media-body a span").text.chomp
-      details(movie_object)
   end
 
   def self.details(movie_object)

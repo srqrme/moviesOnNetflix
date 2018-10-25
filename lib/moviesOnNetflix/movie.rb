@@ -18,19 +18,6 @@ class MoviesOnNetflix::Movie
     end
   end
 
-  #def self.create_from_collection
-    #MoviesOnNetflix::Scraper.scrape_movie_index.each do |movie|
-      #self.new(movie[:rank], movie[:title], movie[:movie_url])
-    #end
-  #end
-
-  #def initialize(title=nil, rank=nil, movie_url=nil)
-    #@rank = rank
-    #@title = title
-    #@movie_url = movie_url
-    #@@all << self
-  #end
-
   def self.all
     @@all
   end

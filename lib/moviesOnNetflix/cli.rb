@@ -70,6 +70,8 @@ class MoviesOnNetflix::CLI
 
     MoviesOnNetflix::Scraper.scrape_movie_profile(movie_object)
 
+    MoviesOnNetflix::Scraper.details(movie_object)
+
     view_another
   end
 
@@ -98,26 +100,5 @@ class MoviesOnNetflix::CLI
     puts "Thank you for using moviesOnNetflix, have a nice day!"
     puts ""
     exit
-  end
-
-  def print_movie(movie_object)
-    puts ".................... #{movie_object.title.upcase} ...................."
-    puts ""
-    puts "Audience Score: #{movie_object.audience_score} liked it."
-    puts "Film Rating: #{movie_object.rating}"
-    puts "Genre:  #{movie_object.genre}"
-    puts "Director: #{movie_object.director}"
-    puts "Starring: #{movie_object.cast}"
-    puts ""
-    puts ".................... Synopsis ...................."
-    puts ""
-    puts "#{movie_object.synopsis}"
-    if movie_object.director == ""
-      puts "Director: N/A"
-    elsif movie_object.rating == ""
-      puts "Film Rating: N/A"
-    elsif movie_object.cast == ""
-      puts "Starring: N/A"
-    end
   end
 end
